@@ -3,6 +3,8 @@ version: '3.7'
 services:
   main:
     container_name: main
+    environment:
+      - NODE_ENV=production
     build:
       context: .
       target: development
@@ -12,7 +14,7 @@ services:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
-    command: npm run start:dev
+    command: npm run start:${NODE_ENV}
     env_file:
       - .env
   mongo:
