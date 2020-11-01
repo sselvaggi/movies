@@ -11,14 +11,15 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+      - /usr/src/app/dist
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
     command: npm run start:${NODE_ENV}
     env_file:
       - .env
-  mongo:
-    container_name: mongo
+  mongo-movies:
+    container_name: mongo-movies
     image: mongo
     volumes:
       - ./data:/data/db
